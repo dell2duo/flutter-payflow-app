@@ -37,14 +37,16 @@ class InsertBoletoController {
       await instance.setStringList("boletos", boletos);
 
       return;
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> cadastrarBoleto() async {
     final form = formKey.currentState;
 
     if (form!.validate()) {
-      return saveBoleto();
+      return await saveBoleto();
     }
   }
 }

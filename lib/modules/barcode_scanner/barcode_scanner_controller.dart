@@ -55,7 +55,9 @@ class BarcodeScannerController {
   void scanWithImagePicker() async {
     // ignore: deprecated_member_use
     final response = await ImagePicker().getImage(source: ImageSource.gallery);
-    final inputImage = InputImage.fromFilePath(response!.path);
+    if (response == null) return;
+
+    final inputImage = InputImage.fromFilePath(response.path);
     scannerBarCode(inputImage);
   }
 

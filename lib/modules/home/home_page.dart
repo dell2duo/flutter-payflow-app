@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:playflow/modules/extrato_page/extrato_page.dart';
 import 'package:playflow/modules/home/home_controller.dart';
@@ -43,14 +44,63 @@ class _HomePageState extends State<HomePage> {
                 "Mantenha suas contas em dia",
                 style: TextStyles.captionShape,
               ),
-              trailing: Container(
-                height: 48,
-                width: 48,
-                decoration: BoxDecoration(
+              trailing: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  fixedSize: Size.square(48),
+                  padding: EdgeInsets.all(0),
+                ),
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: 100,
+                          color: AppColors.grey,
+                          child: Column(
+                            children: [
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  padding: EdgeInsets.symmetric(vertical: 24),
+                                  backgroundColor: Colors.white,
+                                ),
+                                onPressed: () async {
+                                  homeController.logout(context);
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.exit_to_app,
+                                      color: Colors.red,
+                                      size: 24,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        "Logout",
+                                        style: TextStyles.logout,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      });
+                },
+                child: Container(
+                  height: 48,
+                  width: 48,
+                  decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(5),
                     image: DecorationImage(
-                        image: NetworkImage(widget.user.photoURL!))),
+                      image: NetworkImage(widget.user.photoURL!),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),

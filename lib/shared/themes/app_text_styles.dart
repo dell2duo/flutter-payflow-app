@@ -13,6 +13,11 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.background,
   );
+  static final logout = GoogleFonts.lexendDeca(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grey,
+  );
   static final titleBoldHeading = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w600,
